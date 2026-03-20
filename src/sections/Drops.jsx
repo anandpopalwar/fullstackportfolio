@@ -1,13 +1,8 @@
-import React from 'react';
-import { ExternalLink } from 'lucide-react';
-import DPL from "../assets/dpl.jpeg"
+import { ExternalLink } from "lucide-react";
+import DPL from "../assets/dpl.jpeg";
 
-const GMRLogo = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 361.93 132.7"
-    {...props}
-  >
+export const GMRLogo = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.93 132.7" {...props}>
     <g fill="#003974">
       <path d="M74.27 0h13.5c11.02.66 22.14 1.98 32.58 5.78-1.02 9.39-1.99 18.79-2.89 28.19-13.08-7.49-28.83-9.91-43.65-7.54-9.47 1.48-19.08 4.52-26.31 11.06-6.69 5.96-10.9 14.61-11.53 23.54-1.48 12.02 1.26 25.14 9.96 33.99 6.51 6.95 15.78 10.69 25.07 12.06 6.45.74 13.16.73 19.31-1.61-5.68 8.79-11.21 17.67-16.87 26.48-7.17-.54-14.52.75-21.54-1.26-12.95-3.21-25.66-8.93-35.02-18.66C6.35 101.68 1.04 86.99 0 72.46V61.35c.96-15.29 6.31-30.95 17.74-41.6C32.78 5.5 54.22 1.07 74.27 0m178.65 3.29c19.01-.05 38.03-.02 57.05-.02 8.94-.01 18.23.55 26.47 4.32 17.98 8.63 25.49 32.96 16.55 50.56-3.5 8.16-10.77 13.9-18.72 17.43 2.3 4.48 4.24 9.13 6.04 13.83 5.98 14.18 12 28.34 17.82 42.59H324.5c-6.56-16.88-12.98-33.81-19.7-50.63-7.21 0-14.42.04-21.62-.02.01 16.88-.02 33.77.02 50.65h-.52c-9.59-17.03-20.12-33.51-29.76-50.5-.06-26.07-.04-52.14 0-78.21m30.26 25.49v26.38c12.03.08 24.06-.1 36.08.09 4.97-4.11 7.34-11.54 5.38-17.73-1.4-3.45-3.25-7.07-6.74-8.81-11.57.15-23.15.03-34.72.07" />
       <path d="M80.67 55.6c13.79-.33 27.59-.07 41.39-.13-4.95 8.12-10.24 16.03-15.22 24.13-8.72-.1-17.46.2-26.17-.16.13-7.94.13-15.89 0-23.84" />
@@ -22,13 +17,8 @@ const GMRLogo = (props) => (
     />
   </svg>
 );
-
-const MahindraLogiLogo = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 29.075"
-    {...props}
-  >
+export const MahindraLogiLogo = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 29.075" {...props}>
     <path
       fill="#4c4d4f"
       d="M0.156 0.026C0.059 0.104 -0.009 6.648 0.02 14.561c0.019 7.915 0.125 14.389 0.223 14.389 0.107 0 3.52 -3.335 7.593 -7.407L15.226 14.143C3.684 3.079 0.252 -0.062 0.156 0.026"
@@ -40,36 +30,47 @@ const MahindraLogiLogo = (props) => (
   </svg>
 );
 
-
-
 const projects = [
   {
     id: "gmr",
     title: "GMR Energy",
     role: "Frontend Lead",
-    stack: ["React.js", "WebSocket", "RBAC"],
+    stack: [
+      "React.js",
+      "TypeScript",
+      "JavaScript",
+      "SCSS",
+      "WebSocket",
+      "socket.io",
+      "Axios",
+      "Protomaps",
+      "Leaflet",
+      "print-js",
+      "chart.js",
+      "RBAC",
+    ],
     color: "bg-blue-600",
     desc: [
       "Led development of enterprise-scale real-time vehicle tracking system with multi-language support (EN/HIN/GUJ/MAR) and offline interactive maps.",
       "Designed 4-level RBAC ( User > Role > Module > Action ) using custom React hooks.",
       "Built reusable component library (20+ modules) with lazy loading and code splitting.",
-      "Integrated weighbridge, GRN workflows, Form 15, and audit logging for full traceability."
+      "Integrated weighbridge, GRN workflows, Form 15, and audit logging for full traceability.",
     ],
     shape: "rounded-[80px_20px_100px_40px]",
-    logo: <GMRLogo className="w-12 h-6 md:w-16 md:h-8" />
+    logo: <GMRLogo className="w-12 h-6 md:w-16 md:h-8" />,
   },
   {
     id: "mahindra",
     title: "Mahindra Logistics",
     role: "Frontend Dev",
-    stack: ["React.js", "SCSS", "REST"],
+    stack: ["React.js", "SCSS"],
     color: "bg-lime-500",
     desc: [
       "Built real-time glove production monitoring with AI-powered defect detection.",
-      "Enabled live updates, notifications, and file downloads with low-latency UX."
+      "Enabled live updates, notifications, and file downloads with low-latency UX.",
     ],
     shape: "rounded-[40px_100px_30px_80px]",
-    logo: <MahindraLogiLogo className="w-8 h-10 md:w-10 md:h-12" />
+    logo: <MahindraLogiLogo className="w-8 h-10 md:w-10 md:h-12" />,
   },
   {
     id: "dpl",
@@ -79,18 +80,27 @@ const projects = [
     color: "bg-yellow-400",
     desc: [
       "Visualized AI box detection outputs with server-side pagination and reusable components.",
-      "Implemented secure API flows and centralized async state management."
+      "Implemented secure API flows and centralized async state management.",
     ],
     shape: "rounded-[100px_40px_100px_20px]",
-    logo: <img src={DPL} alt="DPL Logo" className="w-16 h-8 md:w-20 md:h-10 object-contain" />
+    logo: (
+      <img
+        src={DPL}
+        alt="DPL Logo"
+        className="w-16 h-8 md:w-20 md:h-10 object-contain"
+      />
+    ),
   },
 ];
 
 export default function Drops({ isDarkMode }) {
   return (
-    <section id="drops" className="py-12 mx-4 md:py-20 max-w-7xl md:mx-auto relative z-10 px-4 md:px-6">
+    <section
+      id="drops"
+      className="py-12 mx-4 md:py-20 max-w-7xl md:mx-auto relative z-10 px-4 md:px-6"
+    >
       <h2 className="text-3xl md:text-6xl font-black uppercase mb-8 md:mb-12 italic flex items-center gap-4 md:gap-6">
-        <div className="w-10 md:w-16 h-2 md:h-3 bg-blue-500 rounded-full" /> Drops
+        Drops
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {projects.map((proj, idx) => (
@@ -99,18 +109,22 @@ export default function Drops({ isDarkMode }) {
             className={`${idx === 0 ? "lg:row-span-2" : ""} group relative`}
           >
             {/* Background Blur organic shape */}
-            <div className={`absolute inset-0 ${proj.color} ${proj.shape} opacity-10 transition-all duration-700 blur-xl group-hover:opacity-20 group-hover:rounded-2xl`} />
+            <div
+              className={`absolute inset-0 ${proj.color} ${proj.shape} opacity-10 transition-all duration-700 blur-xl group-hover:opacity-20 group-hover:rounded-2xl`}
+            />
 
             {/* Card Content */}
             <div
               className={`relative border-[3px] p-6 md:p-10 ${proj.shape} group-hover:rounded-2xl h-full flex flex-col justify-between shadow-2xl transition-all duration-700 ease-in-out ${isDarkMode
-                ? "bg-[#080808]/80 backdrop-blur-xl border-white/10 text-white group-hover:border-blue-500/50"
-                : "bg-white/90 backdrop-blur-xl border-black/10 text-black"
+                  ? "bg-[#080808]/80 backdrop-blur-xl border-white/10 text-white group-hover:border-blue-500/50"
+                  : "bg-white/90 backdrop-blur-xl border-black/10 text-black"
                 }`}
             >
               <div className="space-y-4 md:space-y-6">
                 <div className="flex justify-between items-start">
-                  <div className={`w-16 h-12 md:w-20 md:h-16 rounded-2xl md:rounded-3xl bg-white flex items-center justify-center shadow-xl transition-transform group-hover:scale-105 group-hover:-rotate-3 px-2`}>
+                  <div
+                    className={`w-16 h-12 md:w-20 md:h-16 rounded-2xl md:rounded-3xl bg-white flex items-center justify-center shadow-xl transition-transform group-hover:scale-105 group-hover:-rotate-3 px-2`}
+                  >
                     {proj.logo}
                   </div>
                   <ExternalLink className="w-6 h-6 md:w-8 md:h-8 opacity-20 group-hover:opacity-100 transition-opacity" />

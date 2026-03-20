@@ -6,7 +6,7 @@ export default function GeminiWidget({ isDarkMode }) {
   const [userMessage, setUserMessage] = useState("");
   const [isAiLoading, setIsAiLoading] = useState(false);
   const scrollEndRef = useRef(null);
-  
+
   const [chatHistory, setChatHistory] = useState([
     {
       role: "assistant",
@@ -17,7 +17,7 @@ export default function GeminiWidget({ isDarkMode }) {
   const callGemini = async (prompt) => {
     // In a real application, the API key should not be exposed.
     // Assuming the user handles server-side API calls. For demo, we mock it or fail gracefully.
-    const apiKey = ""; 
+    const apiKey = "";
     const systemPrompt = `Anand Popalwar: Fullstack Dev, 2+ yrs exp at Ease My Ai. Professional, funky. 97% load time boost.`;
     try {
       if (!apiKey) {
@@ -70,9 +70,8 @@ export default function GeminiWidget({ isDarkMode }) {
         </button>
       ) : (
         <div
-          className={`w-[85vw] sm:w-[400px] h-[500px] md:h-[600px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex flex-col border shadow-2xl animate-in slide-in-from-bottom-10 ${
-            isDarkMode ? "bg-[#080808] border-white/10 text-white" : "bg-white border-black/5 text-black"
-          }`}
+          className={`w-[85vw] sm:w-[400px] h-[500px] md:h-[600px] rounded-[2rem] md:rounded-[2.5rem] overflow-hidden flex flex-col border shadow-2xl animate-in slide-in-from-bottom-10 ${isDarkMode ? "bg-[#080808] border-white/10 text-white" : "bg-white border-black/5 text-black"
+            }`}
         >
           <div className="p-4 md:p-6 bg-blue-600 text-white flex justify-between items-center font-black text-[10px] md:text-xs tracking-widest">
             <div className="flex items-center gap-2 md:gap-3">
@@ -92,13 +91,12 @@ export default function GeminiWidget({ isDarkMode }) {
                 className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] p-3 md:p-4 rounded-2xl md:rounded-3xl ${
-                    msg.role === "user"
+                  className={`max-w-[85%] p-3 md:p-4 rounded-2xl md:rounded-3xl ${msg.role === "user"
                       ? "bg-blue-600 text-white rounded-tr-none"
                       : isDarkMode
-                      ? "bg-white/5 border border-white/10 rounded-tl-none"
-                      : "bg-black/5 rounded-tl-none"
-                  }`}
+                        ? "bg-white/5 border border-white/10 rounded-tl-none"
+                        : "bg-black/5 rounded-tl-none"
+                    }`}
                 >
                   {msg.text}
                 </div>
@@ -114,9 +112,8 @@ export default function GeminiWidget({ isDarkMode }) {
           </div>
           <form
             onSubmit={handleSendMessage}
-            className={`p-4 md:p-6 border-t flex gap-2 md:gap-3 ${
-              isDarkMode ? "border-white/10 bg-white/5" : "border-black/5 bg-black/5"
-            }`}
+            className={`p-4 md:p-6 border-t flex gap-2 md:gap-3 ${isDarkMode ? "border-white/10 bg-white/5" : "border-black/5 bg-black/5"
+              }`}
           >
             <input
               type="text"

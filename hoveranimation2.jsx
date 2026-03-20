@@ -5,7 +5,7 @@ import React, { useState, useRef, useEffect } from "react";
  * compatibility in this preview environment.
  */
 
-const App = () => {
+const Drops3 = () => {
     const [hoveredService, setHoveredService] = useState(null);
     const [gsapLoaded, setGsapLoaded] = useState(false);
 
@@ -72,7 +72,7 @@ const App = () => {
 
     if (!gsapLoaded) {
         return (
-            <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center">
                 <div className="text-red-600 animate-pulse text-xl font-serif italic">
                     Loading Physics Engine...
                 </div>
@@ -81,7 +81,7 @@ const App = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col items-center justify-center font-sans overflow-hidden selection:bg-red-600 px-4">
+        <div className="min-h-screen text-white flex flex-col items-center justify-center font-sans overflow-hidden selection:bg-red-600 px-4">
             <div className="text-center mb-8 md:mb-12">
                 <h2 className="text-2xl md:text-5xl font-serif italic mb-1 text-[#f3f3f3]">
                     We know what
@@ -250,7 +250,7 @@ const ServiceItem = ({
             >
                 <div
                     ref={imageRef}
-                    className="w-48 h-32 md:w-80 md:h-48 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 bg-[#111] mb-8"
+                    className="w-48 h-32 md:w-80 md:h-48 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10  mb-8"
                 >
                     <img
                         src={service.image}
@@ -290,4 +290,4 @@ const ServiceItem = ({
     );
 };
 
-export default App;
+export default Drops3;
