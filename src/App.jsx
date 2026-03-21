@@ -78,7 +78,7 @@ export default function App() {
         {/* <Toolkit isDarkMode={isDarkMode} /> */}
         {/* <Drops isDarkMode={isDarkMode} /> */}
         <ProjectShowcase />
-        <Drops2 isDarkMode={isDarkMode} />
+        {/* <Drops2 isDarkMode={isDarkMode} /> */}
         {/* <Drops3 isDarkMode={isDarkMode} /> */}
         <Footer isDarkMode={isDarkMode} />
       </main>

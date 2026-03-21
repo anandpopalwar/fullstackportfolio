@@ -34,7 +34,7 @@ export default function Hero({ isDarkMode }) {
     <>
       <section className="min-h-[100vh] flex flex-col justify-end md:justify-center max-w-7xl mx-auto pt-20 md:pt-24 pb-24 md:pb-12 px-4 md:px-6 relative overflow-hidden">
         {/* Background Image Area (Absolute) */}
-        <div className="absolute inset-0 flex justify-end md:justify-center items-center z-0 pointer-events-none lg:justify-start lg:pl-[10%] xl:pl-[15%] translate-x-12 sm:translate-x-0">
+        <div className="absolute inset-0 flex justify-center items-center z-0 pointer-events-none lg:justify-start lg:pl-[10%] xl:pl-[15%]">
           {/* Visual background glow */}
           {/* <div className="absolute inset-0 bg-blue-500/10 md:bg-blue-500/20 blur-[80px] md:blur-[120px] rounded-full mix-blend-screen opacity-50 animate-pulse"></div> */}
 
@@ -46,7 +46,7 @@ export default function Hero({ isDarkMode }) {
               src={self}
               alt="Anand Popalwar"
               draggable="false"
-              className={`w-full object-contain transition-all scale-[1.7] md:scale-[1.5] origin-right opacity-30 md:opacity-60 lg:opacity-80 select-none pointer-events-none ${isDarkMode ? "invert" : ""}`}
+              className={`w-full object-contain transition-all scale-[1.7] md:scale-[1.5] origin-center md:origin-right opacity-30 md:opacity-60 lg:opacity-80 select-none pointer-events-none ${isDarkMode ? "invert" : ""}`}
             />
           </div>
         </div>

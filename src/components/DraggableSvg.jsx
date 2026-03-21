@@ -91,36 +91,6 @@ export default function DraggableSvg({ containerRef }) {
         ease: "none",
       });
 
-      // Scroll-driven scaling: 1.3 at Hero/Footer → 0.7 at middle sections
-      gsap.fromTo(
-        el,
-        { scale: 1.3 },
-        {
-          scale: 0.7,
-          ease: "none",
-          scrollTrigger: {
-            trigger: document.documentElement,
-            start: "top top",
-            end: "center center",
-            scrub: 1,
-          },
-        },
-      );
-      gsap.fromTo(
-        el,
-        { scale: 0.7 },
-        {
-          scale: 1.3,
-          immediateRender: false,
-          ease: "none",
-          scrollTrigger: {
-            trigger: document.documentElement,
-            start: "center center",
-            end: "bottom bottom",
-            scrub: 1,
-          },
-        },
-      );
     },
     { scope: containerRef },
   );

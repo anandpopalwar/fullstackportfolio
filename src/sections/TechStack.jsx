@@ -57,7 +57,10 @@ function ServiceRow() {
       rafIdRef.current = null;
     }
     if (mouseConstraintRef.current && engineRef.current) {
-      Matter.Composite.remove(engineRef.current.world, mouseConstraintRef.current);
+      Matter.Composite.remove(
+        engineRef.current.world,
+        mouseConstraintRef.current,
+      );
       mouseConstraintRef.current = null;
     }
     tagBodiesRef.current = [];
@@ -87,17 +90,17 @@ function ServiceRow() {
       // Floor: inner edge at floorY, extends 2000px downward
       Matter.Bodies.rectangle(zoneW / 2, floorY + 1000, zoneW + 200, 2000, {
         isStatic: true,
-        collisionFilter: { category: 0x0001, mask: 0xFFFF },
+        collisionFilter: { category: 0x0001, mask: 0xffff },
       }),
       // Left wall: inner edge at x=0, extends 2000px leftward
       Matter.Bodies.rectangle(-1000, floorY / 2, 2000, floorY * 3, {
         isStatic: true,
-        collisionFilter: { category: 0x0001, mask: 0xFFFF },
+        collisionFilter: { category: 0x0001, mask: 0xffff },
       }),
       // Right wall: inner edge at x=zoneW, extends 2000px rightward
       Matter.Bodies.rectangle(zoneW + 1000, floorY / 2, 2000, floorY * 3, {
         isStatic: true,
-        collisionFilter: { category: 0x0001, mask: 0xFFFF },
+        collisionFilter: { category: 0x0001, mask: 0xffff },
       }),
     ]);
 
@@ -118,9 +121,9 @@ function ServiceRow() {
           angle: (Math.random() - 0.5) * 0.5,
           collisionFilter: {
             category: TAG_CATEGORY,
-            mask: 0xFFFF, // collides with everything (walls + other tags)
+            mask: 0xffff, // collides with everything (walls + other tags)
           },
-        }
+        },
       );
       Matter.Composite.add(engine.world, body);
       tagBodiesRef.current.push(body);
@@ -174,8 +177,9 @@ function ServiceRow() {
       };
 
       const isOverBody = (pt) => {
-        const bodies = Matter.Composite.allBodies(engineRef.current.world)
-          .filter((b) => !b.isStatic);
+        const bodies = Matter.Composite.allBodies(
+          engineRef.current.world,
+        ).filter((b) => !b.isStatic);
         return Matter.Query.point(bodies, pt).length > 0;
       };
 
@@ -197,23 +201,35 @@ function ServiceRow() {
       });
 
       // Touch events (mobile) — passive: false so we CAN preventDefault
-      el.addEventListener("touchstart", (e) => {
-        const pt = getPoint(e);
-        draggingBody = isOverBody(pt);
-        mouse.mousedown(e);
-      }, { passive: true });
+      el.addEventListener(
+        "touchstart",
+        (e) => {
+          const pt = getPoint(e);
+          draggingBody = isOverBody(pt);
+          mouse.mousedown(e);
+        },
+        { passive: true },
+      );
 
-      el.addEventListener("touchmove", (e) => {
-        mouse.mousemove(e);
-        if (draggingBody && e.cancelable) {
-          e.preventDefault(); // block scroll ONLY when dragging a tag
-        }
-      }, { passive: false });
+      el.addEventListener(
+        "touchmove",
+        (e) => {
+          mouse.mousemove(e);
+          if (draggingBody && e.cancelable) {
+            e.preventDefault(); // block scroll ONLY when dragging a tag
+          }
+        },
+        { passive: false },
+      );
 
-      el.addEventListener("touchend", (e) => {
-        mouse.mouseup(e);
-        draggingBody = false;
-      }, { passive: true });
+      el.addEventListener(
+        "touchend",
+        (e) => {
+          mouse.mouseup(e);
+          draggingBody = false;
+        },
+        { passive: true },
+      );
 
       const mouseConstraint = Matter.MouseConstraint.create(engineRef.current, {
         mouse: mouse,
@@ -247,7 +263,7 @@ function ServiceRow() {
           setShowTags(true);
         }
       },
-      { threshold: 1.0 }
+      { threshold: 1.0 },
     );
 
     observer.observe(section);
@@ -272,11 +288,11 @@ function ServiceRow() {
       ref={sectionRef}
       className="relative w-full min-h-[25vh] md:min-h-[25vh] pt-10 md:pt-20 px-4 md:px-6 pb-4 md:pb-10 flex flex-col items-center overflow-visible font-sans"
     >
-      {["MY", "SUPER", "POWERS"].map((name) => (
+      {["Here's", "The Sauce"].map((name) => (
         <h1
           ref={titleRef}
           key={name}
-          className="relative z-10 text-[7rem] md:text-[10rem] font-bold uppercase tracking-tighter leading-[0.85] text-red-600 px-4 select-none"
+          className="relative z-10 text-[7rem] md:text-[10rem] font-bold uppercase tracking-tighter leading-[0.85] text-red-600 px-4 select-none text-center"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
           {name}
@@ -297,7 +313,9 @@ function ServiceRow() {
               className="absolute top-0 left-0 flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 bg-[#1a1a1a] text-[#f0f0f0] text-lg md:text-xl whitespace-nowrap opacity-0 animate-[fadeIn_0.3s_ease_forwards] will-change-transform cursor-grab active:cursor-grabbing select-none"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <span className="w-5 h-5 shrink-0 pointer-events-none">{skill.icon}</span>
+              <span className="w-5 h-5 shrink-0 pointer-events-none">
+                {skill.icon}
+              </span>
               <span className="italic pointer-events-none">{skill.name}</span>
             </div>
           ))}

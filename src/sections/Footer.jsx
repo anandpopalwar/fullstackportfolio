@@ -1,17 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { FileText, MapPin, Clock, Github, Linkedin, Mail, Twitter, Instagram, Dribbble } from 'lucide-react';
-import { FunkySVG } from '../components/DraggableSvg';
+import React, { useState, useEffect } from "react";
+import {
+  FileDown,
+  MapPin,
+  Clock,
+  Github,
+  Linkedin,
+  Mail,
+  Twitter,
+  Instagram,
+  Dribbble,
+  ArrowUpRight,
+} from "lucide-react";
+import { FunkySVG } from "../components/DraggableSvg";
 
 const socials = [
-  { Icon: Github, label: "GitHub", href: "#" },
-  { Icon: Linkedin, label: "LinkedIn", href: "#" },
-  { Icon: Mail, label: "Email", href: "#" },
-  { Icon: Twitter, label: "Twitter", href: "#" },
-  { Icon: Instagram, label: "Instagram", href: "#" },
-  { Icon: Dribbble, label: "Dribbble", href: "#" },
+  {
+    Icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/anandpopalwar",
+    hoverClass: "hover:bg-[#0077b5] hover:border-[#0077b5] hover:text-white"
+  },
+  { Icon: Mail, label: "Email", href: "anandpopalwar444@gmail.com", hoverClass: "hover:bg-[#ea4335] hover:border-[#ea4335] hover:text-white" },
+  { Icon: Github, label: "GitHub", href: "https://github.com/anandpopalwar", hoverClass: "hover:bg-[#333333] hover:border-[#333333] hover:text-white" },
+  { Icon: Twitter, label: "Twitter", href: "#", hoverClass: "hover:bg-[#1DA1F2] hover:border-[#1DA1F2] hover:text-white" },
+  { Icon: Instagram, label: "Instagram", href: "#", hoverClass: "hover:bg-[#E1306C] hover:border-[#E1306C] hover:text-white" },
+  { Icon: Dribbble, label: "Dribbble", href: "#", hoverClass: "hover:bg-[#ea4c89] hover:border-[#ea4c89] hover:text-white" },
 ];
 
-export default function Footer({ isDarkMode }) {
+export default function Footer() {
   const [localTime, setLocalTime] = useState("");
 
   useEffect(() => {
@@ -31,80 +47,103 @@ export default function Footer({ isDarkMode }) {
   return (
     <section
       id="contact"
-      className={`relative z-10 py-16 md:py-28 border-t transition-colors duration-700 overflow-hidden ${isDarkMode ? "border-white/10" : "border-black/10"
-        }`}
+      className="relative z-10 bg-[#ffffff] text-[#050505] py-20 lg:py-32 overflow-hidden border-t border-zinc-100 font-sans"
     >
-      <div className="container mx-auto px-4 md:px-6">
-        {/* ── Two-column layout: LEFT heading + branding | RIGHT socials + resume ── */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-          {/* LEFT — Heading + Branding */}
-          <div className="flex-1 space-y-8">
-            <h2 className="text-4xl sm:text-6xl md:text-[6rem] lg:text-[8rem] font-black uppercase leading-[0.85] tracking-tighter select-none">
-              Let's <br />
-              <span className="inline-block mt-1 md:mt-2 bg-gradient-to-r from-blue-500 via-purple-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(147,51,234,0.5)]">
-                Lock In
-              </span>
-              <br />
-              <span className="inline-block mt-1 md:mt-2 bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(236,72,153,0.4)]">
-                & Cook
-              </span>
-            </h2>
+      <div className="w-full max-w-[1400px] mx-auto px-6 lg:px-12">
+        {/* MASSIVE TYPOGRAPHY HEADLINE */}
+        <div className="w-full mb-16 lg:mb-28 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <h2 className="text-[14vw] sm:text-[12vw] lg:text-[10rem] xl:text-[11.5rem] font-black uppercase leading-[0.8] tracking-[-0.04em] flex flex-wrap justify-center lg:justify-start gap-x-[3vw] lg:gap-x-8 gap-y-2 lg:gap-y-6 ">
+            <span className="">LET'S</span>
+          </h2>
+          <h2 className="text-[14vw] sm:text-[12vw] lg:text-[10rem] xl:text-[11.5rem] font-black uppercase leading-[0.8] tracking-[-0.04em] flex flex-wrap justify-center lg:justify-start gap-x-[3vw] lg:gap-x-8 gap-y-2 lg:gap-y-6 ">
+            <span className="text-red-600">LOCK IN</span>
+          </h2>
+          <h2 className="text-[14vw] sm:text-[12vw] lg:text-[10rem] xl:text-[11.5rem] font-black uppercase leading-[0.8] tracking-[-0.04em] flex flex-wrap justify-center lg:justify-start gap-x-[3vw] lg:gap-x-8 gap-y-2 lg:gap-y-6 ">
+            <span className="text-black">&</span>
+          </h2>
+          <h2 className="text-[14vw] sm:text-[12vw] lg:text-[10rem] xl:text-[11.5rem] font-black uppercase leading-[0.8] tracking-[-0.04em] flex flex-wrap justify-center lg:justify-start gap-x-[3vw] lg:gap-x-8 gap-y-2 lg:gap-y-6 ">
+            <span className="text-red-600">COOK</span>
+          </h2>
+        </div>
 
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl flex items-center justify-center shadow-2xl transform rotate-12">
-                  <FunkySVG />
-                </div>
-                <span className="text-xl md:text-2xl font-black italic tracking-tighter">
-                  ANAND POPALWAR
-                </span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-end">
+          {/* LEFT COLUMN */}
+          <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col items-center lg:items-start space-y-8 text-center lg:text-left">
+            {/* Avatar & Name */}
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <div className="w-16 h-16 sm:w-14 sm:h-14 rounded-full overflow-hidden bg-zinc-100 flex items-center justify-center border border-zinc-200 p-2">
+                <FunkySVG />
               </div>
-              <p className="text-sm md:text-lg max-w-sm font-medium opacity-50 leading-relaxed">
-                Crafting enterprise AI dashboards & real-time systems with obsessive attention to detail.
-              </p>
-              <div className="space-y-2 text-xs md:text-sm font-bold">
-                <div className="flex items-center gap-2 md:gap-3">
-                  <MapPin className="w-4 h-4 md:w-5 md:h-5 text-blue-500" /> Navi Mumbai, IN
-                </div>
-                <div className="flex items-center gap-3">
-                  <Clock className="w-4 h-4 md:w-5 md:h-5 text-yellow-500" /> {localTime || "00:00"}
-                </div>
+              <span className="text-3xl sm:text-4xl font-black tracking-tighter text-[#050505]">
+                ANAND POPALWAR
+              </span>
+            </div>
+
+            {/* Subtitle */}
+            <p className="text-zinc-500 text-lg md:text-xl font-medium max-w-md leading-relaxed">
+              Crafting premium digital experiences, enterprise dashboards, and
+              real-time systems.
+            </p>
+
+            {/* Meta tags */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 text-xs sm:text-sm font-bold tracking-widest uppercase text-zinc-900 pt-2">
+              <div className="flex items-center gap-2 px-5 py-3 bg-zinc-100/80 rounded-xl border border-zinc-200">
+                <MapPin className="w-5 h-5 text-red-500" /> Navi Mumbai, IN
+              </div>
+              <div className="flex items-center gap-2 px-5 py-3 bg-zinc-100/80 rounded-xl border border-zinc-200">
+                <Clock className="w-5 h-5 text-blue-500" />{" "}
+                {localTime || "00:00 AM"}
               </div>
             </div>
           </div>
 
-          {/* RIGHT — Social Grid + Resume */}
-          <div className="flex flex-col items-start lg:items-end gap-6 lg:pt-8">
-            <div className="grid grid-cols-3 gap-3 md:gap-4">
-              {socials.map(({ Icon, label, href }) => (
+          {/* RIGHT COLUMN */}
+          <div className="order-1 lg:order-2 lg:col-span-5 flex flex-col space-y-6 lg:ml-auto w-full lg:max-w-md items-center lg:items-end">
+            {/* 2x3 Grid */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 w-[75%] sm:w-full max-w-[280px] sm:max-w-none">
+              {socials.map(({ Icon, label, href, hoverClass }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className={`group p-4 md:p-5 rounded-2xl border transition-all duration-300 hover:scale-110 hover:-translate-y-1 flex items-center justify-center ${isDarkMode
-                      ? "border-white/10 bg-white/5 hover:bg-white hover:text-black"
-                      : "border-black/10 bg-black/5 hover:bg-black hover:text-white"
-                    }`}
+                  className={`group aspect-square rounded-[1rem] sm:rounded-[2rem] bg-zinc-100/80 border border-zinc-200 flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:-translate-y-1 active:scale-95 shadow-sm text-zinc-800 ${hoverClass || "hover:bg-zinc-200"}`}
                 >
-                  <Icon className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:scale-110" />
+                  <Icon
+                    className="w-6 h-6 sm:w-10 sm:h-10 transition-transform group-hover:scale-110"
+                    strokeWidth={1.5}
+                  />
                 </a>
               ))}
             </div>
 
+            {/* Resume Button */}
             <a
               href="#"
-              className="flex items-center gap-3 px-8 py-4 bg-[#adff2f] text-black rounded-2xl font-black text-xs md:text-sm uppercase tracking-widest hover:bg-[#c8ff5c] transition-all duration-300 shadow-[0_0_30px_rgba(173,255,47,0.3)] hover:shadow-[0_0_50px_rgba(173,255,47,0.5)] hover:-translate-y-1"
+              className="group relative flex items-center justify-between w-full p-2 bg-[#ccff00] rounded-[2rem] hover:bg-[#b8e600] transition-colors duration-300 shadow-[0_10px_40px_-10px_rgba(204,255,0,0.5)] overflow-hidden"
             >
-              <FileText className="w-5 h-5" />
-              Grab Resume
+              <div className="flex items-center gap-3 md:gap-4 px-6 sm:px-8 py-3 sm:py-4">
+                <FileDown
+                  className="w-6 h-6 sm:w-8 sm:h-8 text-[#050505]"
+                  strokeWidth={2.5}
+                />
+                <span className="text-[#050505] font-black uppercase text-xl sm:text-2xl tracking-tighter mt-1">
+                  GRAB RESUME
+                </span>
+              </div>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#050505] flex-shrink-0 rounded-[1.5rem] flex items-center justify-center mr-1 group-hover:rotate-12 transition-transform duration-300">
+                <ArrowUpRight
+                  className="w-7 h-7 sm:w-8 sm:h-8 text-[#ccff00]"
+                  strokeWidth={2.5}
+                />
+              </div>
             </a>
           </div>
         </div>
 
-        {/* ── Bottom Bar ── */}
-        <div className="mt-16 md:mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs opacity-30 font-bold uppercase tracking-widest">
+        {/* BOTTOM BAR */}
+        <div className="mt-20 sm:mt-32 pt-8 border-t border-zinc-200 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-bold text-zinc-400 uppercase tracking-widest text-center md:text-left">
           <span>© {new Date().getFullYear()} Anand Popalwar</span>
-          <span>Built with React + Vite + Tailwind</span>
+          <span>Gen Z × Millennial Aesthetics</span>
         </div>
       </div>
     </section>
