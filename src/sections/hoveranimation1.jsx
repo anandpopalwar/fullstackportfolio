@@ -197,7 +197,7 @@ const Drops2 = () => {
     if (!gsapLoaded) {
         return (
             <div className="min-h-screen  flex items-center justify-center">
-                <div className="text-red-600 animate-pulse text-xl font-serif italic">
+                <div className="text-blue-600 animate-pulse text-xl font-serif italic">
                     Loading Animation Engine...
                 </div>
             </div>
@@ -205,7 +205,7 @@ const Drops2 = () => {
     }
 
     return (
-        <div className="min-h-screen  flex flex-col items-center justify-center font-sans overflow-hidden selection:bg-red-600 px-4">
+        <div className="min-h-screen  flex flex-col items-center justify-center font-sans overflow-hidden selection:bg-blue-600 px-4">
             {/* Header */}
             <div className="text-center mb-8 md:mb-12">
                 <h2 className="text-2xl md:text-5xl font-serif italic mb-1">
@@ -322,7 +322,7 @@ const ServiceItem = ({
             );
 
             gsap.to(titleRef.current, {
-                color: "#ef4444",
+                color: "#2563eb",
                 opacity: 1,
                 scale: 1.05,
                 duration: 0.4,
@@ -358,7 +358,7 @@ const ServiceItem = ({
 
             // Reset Title
             gsap.to(titleRef.current, {
-                color: isAnyHovered ? "#222" : "#ef4444",
+                color: isAnyHovered ? "#222" : "#2563eb",
                 opacity: isAnyHovered ? 0.3 : 1,
                 scale: 1,
                 duration: 0.3,
@@ -412,7 +412,7 @@ const ServiceItem = ({
 
             <h2
                 ref={titleRef}
-                className="text-[10vw] md:text-9xl font-bold tracking-tighter text-center select-none z-10 leading-none transition-all duration-300 uppercase text-red-500"
+                className="text-[10vw] md:text-9xl font-bold tracking-tighter text-center select-none z-10 leading-none transition-all duration-300 uppercase text-blue-500"
                 style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
             >
                 {service.title.split(" ").map((word, i) => (
@@ -463,7 +463,7 @@ const ServiceItem = ({
                             <h3 className="text-xl md:text-2xl font-black text-white tracking-tight">
                                 {service.title}
                             </h3>
-                            <span className="text-red-600 text-xs md:text-sm font-bold uppercase tracking-widest">
+                            <span className="text-blue-600 text-xs md:text-sm font-bold uppercase tracking-widest">
                                 {service.role}
                             </span>
                         </div>
@@ -474,7 +474,7 @@ const ServiceItem = ({
                                     key={idx}
                                     className="flex items-start gap-3 text-white/80 text-sm md:text-base leading-relaxed"
                                 >
-                                    <span className="mt-1.5 w-2 h-2 rounded-full text-red-600 shrink-0" />
+                                    <span className="mt-1.5 w-2 h-2 rounded-full text-blue-600 shrink-0" />
                                     {item}
                                 </li>
                             ))}

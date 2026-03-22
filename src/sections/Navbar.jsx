@@ -1,6 +1,7 @@
-import React from 'react'
-import DraggableSvg from '../components/DraggableSvg'
-import { Moon, Sun } from 'lucide-react'
+import React from "react";
+import DraggableSvg from "../components/DraggableSvg";
+import { Moon, Sun } from "lucide-react";
+import Text from "../components/ui/Text";
 
 const Navbar = ({ isDarkMode, setIsDarkMode, containerRef }) => {
     return (
@@ -11,44 +12,38 @@ const Navbar = ({ isDarkMode, setIsDarkMode, containerRef }) => {
                     : "bg-black/5 border-black/10"
                     }`}
             >
-                <div className="text-lg md:text-2xl font-black italic tracking-tighter flex items-center gap-2">
+                <div className="text-lg md:text-2xl font-black tracking-tighter flex items-center gap-2">
                     <DraggableSvg isDarkMode={isDarkMode} containerRef={containerRef} />
-                    <span>
-                        ANAND<span className="text-blue-500">.</span>POPALWAR
-                    </span>
-                </div>
-                <div className="flex gap-3 md:gap-4 items-center uppercase text-[9px] md:text-[10px] font-black tracking-[0.2em]">
-                    <button
-                        onClick={() => setIsDarkMode(!isDarkMode)}
-                        className="p-2 md:p-2.5 rounded-full border transition-all hover:scale-110"
+                    <Text
+                        as="span"
+                        variant="heading3"
+                        className="text-lg md:text-2xl font-black tracking-tighter"
                     >
-                        {isDarkMode ? (
-                            <Sun className="w-3.5 h-3.5 md:w-4 md:h-4 text-yellow-400" />
-                        ) : (
-                            <Moon className="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-600" />
-                        )}
-                    </button>
+                        ANAND POPALWAR
+                    </Text>
+                </div>
+                <div className="flex gap-3 md:gap-4 items-center uppercase text-xs md:text-sm font-black tracking-tighter">
                     <div className="hidden sm:flex gap-6 md:gap-8">
                         <a
-                            href="#drops"
-                            className="hover:text-blue-400 transition-colors"
+                            href="#projects"
+                            className="hover:underline hover:underline-offset-4 transition-colors"
                         >
-                            Drops
+                            projects
                         </a>
                     </div>
                     <a
                         href="#contact"
-                        className={`px-4 md:px-6 py-1.5 md:py-2 rounded-full text-[9px] md:text-[10px] font-black tracking-widest transition-all hover:scale-105 ${isDarkMode
+                        className={`px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-black tracking-tighter transition-all hover:scale-105 ${isDarkMode
                             ? "bg-white text-black hover:bg-yellow-400"
                             : "bg-black text-white hover:bg-blue-600"
                             }`}
                     >
-                        Connect
+                        Say Hola 👋
                     </a>
                 </div>
             </div>
         </nav>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;

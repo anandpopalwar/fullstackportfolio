@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useCallback, useState } from "react";
 import Matter from "matter-js";
 import { skills } from "./Toolkit";
+import Text from "../components/ui/Text";
 
 // Collision category for tag bodies only (walls/floor stay at default 0x0001)
 const TAG_CATEGORY = 0x0002;
@@ -288,11 +289,11 @@ function ServiceRow() {
       ref={sectionRef}
       className="relative w-full min-h-[25vh] md:min-h-[25vh] pt-10 md:pt-20 px-4 md:px-6 pb-4 md:pb-10 flex flex-col items-center overflow-visible font-sans"
     >
-      {["Here's", "The Sauce"].map((name) => (
+      {["Skills", "& Tech"].map((name) => (
         <h1
           ref={titleRef}
           key={name}
-          className="relative z-10 text-[7rem] md:text-[10rem] font-bold uppercase tracking-tighter leading-[0.85] text-red-600 px-4 select-none text-center"
+          className="relative z-10 text-[7rem] md:text-[10rem] font-bold uppercase tracking-tighter leading-[0.85] text-blue-600 px-4 select-none text-center"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
           {name}
@@ -316,7 +317,13 @@ function ServiceRow() {
               <span className="w-5 h-5 shrink-0 pointer-events-none">
                 {skill.icon}
               </span>
-              <span className="italic pointer-events-none">{skill.name}</span>
+              <Text
+                as="span"
+                variant="monoBody"
+                className="pointer-events-none pb-0.5 leading-none"
+              >
+                {skill.name}
+              </Text>
             </div>
           ))}
       </div>

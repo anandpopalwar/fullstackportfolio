@@ -13,6 +13,9 @@ import self from "../assets/me.png";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedHeading from "../components/ui/AnimatedHeading";
+import CustomButton from "../components/ui/CustomButton";
+import Text from "../components/ui/Text";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,15 +59,16 @@ export default function Hero({ isDarkMode }) {
           <div className="flex flex-col items-start md:items-end max-w-3xl w-full">
             {/* Massive Responsive Typography */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-black leading-[0.85] tracking-tighter uppercase mb-4 md:mb-5 select-none">
-              Anand <br />
-              Popalwar
+              MERN <br />
+              Developer
+              {/* Engineer */}
             </h1>
 
             {/* Tagline */}
-            <p className="text-base md:text-xl font-medium md:w-2/3 opacity-80 mb-8 md:mb-10 leading-relaxed">
+            <Text variant="body" as="p" className="text-base md:text-xl font-medium md:w-2/3 opacity-80 mb-8 md:mb-10">
               Specialized in building enterprise analytics dashboards and
               scalable web platforms.
-            </p>
+            </Text>
 
             {/* CTA Buttons */}
             <div className="flex w-full flex-wrap items-center justify-center md:justify-end gap-4 md:gap-6 mb-8 md:mb-10">
@@ -81,7 +85,7 @@ export default function Hero({ isDarkMode }) {
                 </span>
               </a>
               <a
-                href="#drops"
+                href="#projects"
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] hover:-translate-y-1"
               >
                 View Projects <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
