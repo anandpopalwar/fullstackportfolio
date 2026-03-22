@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
-import { createPortal } from "react-dom";
+import { gsap } from "gsap";
 import {
   Map,
   MapPin,
@@ -13,8 +13,6 @@ import {
 } from "lucide-react";
 import StackIcon from "tech-stack-icons";
 import ProjectModal from "../components/ui/ProjectModal";
-
-
 
 const LucideIcon = ({ name }) => {
   switch (name) {
@@ -129,7 +127,6 @@ const ACCENT = "#2563eb";
 // Unified GSAP Portal Modal (Mobile & Desktop)
 // ---------------------------------------------------------------------------
 
-
 // ---------------------------------------------------------------------------
 // Main Component
 // ---------------------------------------------------------------------------
@@ -140,26 +137,10 @@ export default function ProjectShowcase() {
 
   const [activeIndex, setActiveIndex] = useState(-1);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [gsapLoaded, setGsapLoaded] = useState(false);
-
-  // Dynamic GSAP Loader
-  useEffect(() => {
-    if (window.gsap) {
-      setGsapLoaded(true);
-      return;
-    }
-    const script = document.createElement("script");
-    script.src =
-      "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js";
-    script.async = true;
-    script.onload = () => setGsapLoaded(true);
-    document.body.appendChild(script);
-    return () => { };
-  }, []);
 
   // ─── Desktop Magnetic Title Pull ───
   useEffect(() => {
-    if (!gsapLoaded || !window.gsap) return;
+    if (!gsap) return;
 
     const handleMouseMoveRow = (e, index) => {
       const title = titleRefs.current[index];
@@ -176,7 +157,7 @@ export default function ProjectShowcase() {
       const pullX = distanceX * 0.05;
       const pullY = distanceY * 0.1;
 
-      window.gsap.to(title, {
+      gsap.to(title, {
         x: pullX,
         y: pullY,
         duration: 0.8,
@@ -188,7 +169,7 @@ export default function ProjectShowcase() {
     const handleMouseLeaveRow = (index) => {
       const title = titleRefs.current[index];
       if (!title) return;
-      window.gsap.to(title, {
+      gsap.to(title, {
         x: 0,
         y: 0,
         duration: 0.8,
@@ -214,7 +195,7 @@ export default function ProjectShowcase() {
         row.removeEventListener("mouseleave", leave);
       });
     };
-  }, [gsapLoaded, SERVICES.length, selectedProject]);
+  }, [selectedProject]);
 
   // Handlers
   const handleRowEnter = useCallback((i) => {
@@ -266,8 +247,9 @@ export default function ProjectShowcase() {
             >
               {/* Row Header */}
               <div
-                className={`group flex items-center justify-between gap-4 md:gap-8 py-8 md:py-14 transition-all duration-500 ${isDimmed ? "opacity-30 grayscale" : "opacity-100"
-                  } ${isActive ? "bg-zinc-50/80 -mx-4 px-4 rounded-[32px]" : ""}`}
+                className={`group flex items-center justify-between gap-4 md:gap-8 py-8 md:py-14 transition-all duration-500 ${
+                  isDimmed ? "opacity-30 grayscale" : "opacity-100"
+                } ${isActive ? "bg-zinc-50/80 -mx-4 px-4 rounded-[32px]" : ""}`}
               >
                 {/* Title and Role Container */}
                 <div className="flex flex-col gap-2 md:gap-3 flex-1 min-w-0 justify-center">
