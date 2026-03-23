@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import StackIcon from "tech-stack-icons";
 import ProjectModal from "../components/ui/ProjectModal";
+import { AxiosIcon, ChartjsIcon } from "../components/ui/SocialIcon";
 
 const LucideIcon = ({ name }) => {
   switch (name) {
@@ -60,11 +61,11 @@ const SERVICES = [
       { name: "SCSS", icon: <LucideIcon name="sass" /> },
       { name: "WebSocket", icon: <Wifi size={14} /> },
       { name: "socket.io", icon: <LucideIcon name="socketio" /> },
-      { name: "Axios", icon: <Globe size={14} /> },
+      { name: "Axios", icon: <AxiosIcon size={14} /> },
       { name: "Protomaps", icon: <Map size={14} /> },
       { name: "Leaflet", icon: <MapPin size={14} /> },
       { name: "print-js", icon: <Printer size={14} /> },
-      { name: "chart.js", icon: <BarChart3 size={14} /> },
+      { name: "chart.js", icon: <ChartjsIcon size={14} /> },
       { name: "Docker", icon: <LucideIcon name="docker" /> },
       { name: "RBAC", icon: <Lock size={14} /> },
     ],
@@ -89,8 +90,8 @@ const SERVICES = [
       { name: "JavaScript", icon: <LucideIcon name="js" /> },
       { name: "SCSS", icon: <LucideIcon name="sass" /> },
       { name: "socket.io", icon: <LucideIcon name="socketio" /> },
-      { name: "Axios", icon: <Globe size={14} /> },
-      { name: "chart.js", icon: <BarChart3 size={14} /> },
+      { name: "Axios", icon: <AxiosIcon size={14} /> },
+      { name: "chart.js", icon: <ChartjsIcon size={14} /> },
       { name: "Docker", icon: <LucideIcon name="docker" /> },
     ],
     desc: [
@@ -109,8 +110,8 @@ const SERVICES = [
       { name: "JavaScript", icon: <LucideIcon name="js" /> },
       { name: "SCSS", icon: <LucideIcon name="sass" /> },
       { name: "socket.io", icon: <LucideIcon name="socketio" /> },
-      { name: "Axios", icon: <Globe size={14} /> },
-      { name: "chart.js", icon: <BarChart3 size={14} /> },
+      { name: "Axios", icon: <AxiosIcon size={14} /> },
+      { name: "chart.js", icon: <ChartjsIcon size={14} /> },
       { name: "Docker", icon: <LucideIcon name="docker" /> },
     ],
     desc: [
@@ -214,7 +215,8 @@ export default function ProjectShowcase() {
   return (
     <section
       ref={containerRef}
-      className={`relative w-full py-16 md:py-28 px-4 md:px-8 lg:px-16 bg-[#ffffff]`}
+      id="projects"
+      className={`relative w-full pt-16 pb-8 md:pt-28 md:pb-14 px-4 md:px-8 lg:px-16 bg-[#ffffff]`}
     >
       {/* Section Header */}
       <div className="max-w-7xl mx-auto mb-4 md:mb-6">
@@ -269,8 +271,7 @@ export default function ProjectShowcase() {
                       color: isActive ? "#050505" : ACCENT,
                     }}
                   >
-                    {project.role}
-                    <span className="text-black">.</span>
+                    {project.role}.
                   </span>
 
                   {/* Description Highlights */}

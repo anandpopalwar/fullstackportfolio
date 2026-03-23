@@ -8,12 +8,13 @@ import Drops from "./sections/Drops";
 import GeminiWidget from "./components/GeminiWidget";
 import Drops2 from "./sections/hoveranimation1";
 import Drops3 from "../hoveranimation2";
-import Footer from "./sections/Footer";
 import Stack from "./sections/Stack";
 import Stacks from "./sections/Stacks";
 import TechStack from "./sections/TechStack";
 import Navbar from "./sections/Navbar";
 import ProjectShowcase from "./sections/ProjectShowcase";
+import StickyFooter from "./components/StickyFooter";
+import Contact from "./sections/Contact";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -31,59 +32,18 @@ export default function App() {
       </div>
 
       <Navbar {...{ isDarkMode, setIsDarkMode, containerRef }} />
-      <main className="relative z-10 px-0">
-        <Hero isDarkMode={isDarkMode} />
-
-        {/* Stats Section */}
-        {/* <section className="py-12 md:py-20 max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {[
-              {
-                val: "97%",
-                label: "Load Reduction",
-                color: "bg-yellow-400 text-black",
-              },
-              {
-                val: "200+",
-                label: "Active Users",
-                color: "bg-blue-600 text-white",
-              },
-              {
-                val: "35%",
-                label: "Dev Boost",
-                color: isDarkMode
-                  ? "bg-[#0a0a0a] border-white/10 text-white"
-                  : "bg-slate-50 border-black/10 text-black",
-              },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className={`p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl transition-all hover:-translate-y-2 ${stat.color} ${stat.color.includes("border") ? "border" : ""
-                  }`}
-              >
-                <div className="text-5xl md:text-8xl font-black italic tracking-tighter">
-                  {stat.val}
-                </div>
-                <p className="font-black text-[10px] md:text-xs uppercase mt-3 md:mt-4 tracking-[0.2em] opacity-60">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section> */}
-
-        {/* <Stack isDarkMode={isDarkMode} />
-        <Stacks /> */}
+      <main
+        className={`relative z-10 px-0 ${isDarkMode ? "bg-[#000000]" : "bg-[#ffffff]"
+          }`}
+      >
+        <Hero />
         <TechStack />
-        {/* <Toolkit isDarkMode={isDarkMode} /> */}
-        {/* <Drops isDarkMode={isDarkMode} /> */}
         <ProjectShowcase />
-        {/* <Drops2 isDarkMode={isDarkMode} /> */}
-        {/* <Drops3 isDarkMode={isDarkMode} /> */}
-        <Footer isDarkMode={isDarkMode} />
+        <Contact />
       </main>
-
-      <GeminiWidget isDarkMode={isDarkMode} />
+      {/* Spacer for ScrollTrigger room */}
+      <div className="h-50" aria-hidden="true" />
+      <StickyFooter />
     </div>
   );
 }

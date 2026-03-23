@@ -1,14 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import TechChip from "./Techchip";
 import { X } from "lucide-react";
+import GlassSurface from "./GlassSurface";
 
 const ProjectModal = ({ project, onClose }) => {
   const overlayRef = useRef(null);
   const contentRef = useRef(null);
   const itemsRef = useRef([]);
   const cursorRef = useRef(null);
+  const marqueeTweens = useRef([]);
+  const containerRefs = useRef([]);
+  const rowRefs = useRef([]);
+
+  // Split tags into two rows for independent marquees
+  const firstRowTags = project.tags;
+  const secondRowTags = project.tags;
 
   const closeAnimation = () => {
     if (!gsap) {
@@ -131,6 +139,42 @@ const ProjectModal = ({ project, onClose }) => {
     };
   }, []);
 
+  useLayoutEffect(() => {
+    const setupBoundedAnimation = (index) => {
+      const container = containerRefs.current[index];
+      const row = rowRefs.current[index];
+      if (!container || !row) return;
+
+      const containerWidth = container.offsetWidth;
+      const contentWidth = row.scrollWidth;
+      const maxTranslate = contentWidth - containerWidth;
+
+      if (maxTranslate <= 0) return; // No animation needed if content fits
+
+      const startX = -maxTranslate / 2; // Center content initially
+      const isFirstRow = index === 0;
+      const targetX = isFirstRow ? 0 : -maxTranslate;
+
+      marqueeTweens.current[index] = gsap.fromTo(
+        row,
+        { x: startX },
+        {
+          x: targetX,
+          duration: 20,
+          ease: "none",
+          repeat: -1,
+          yoyo: true,
+        },
+      );
+    };
+
+    [0, 1].forEach(setupBoundedAnimation);
+
+    return () => {
+      marqueeTweens.current.forEach((tween) => tween?.kill());
+    };
+  }, [project]);
+
   if (!project) return null;
 
   return createPortal(
@@ -141,13 +185,29 @@ const ProjectModal = ({ project, onClose }) => {
       onClick={closeAnimation}
     >
       {/* Custom Cursor Close Button (Desktop Only) */}
-      <div
+      {/* <div
         ref={cursorRef}
         className="hidden md:flex pointer-events-none fixed top-0 left-0 z-10000 w-16 h-16 bg-[#2563eb] rounded-full items-center justify-center text-white shadow-2xl will-change-transform scale-100"
+      ></div> */}
+
+      <div
+        ref={cursorRef}
+        className="hidden md:flex pointer-events-none fixed top-0 left-0 z-10000 w-24 h-24 rounded-full items-center justify-center text-blue-500 shadow-2xl will-change-transform scale-100"
       >
-        <div className="flex flex-col items-center justify-center gap-1">
-          <X className="w-6 h-6 stroke-3" />
-        </div>
+        <GlassSurface
+          width={"w-24"}
+          height={"h-24"}
+          borderRadius={50}
+          saturation={0.5}
+          Displace={5}
+          redOffset={50}
+          greenOffset={50}
+          Blur={"30px"}
+        >
+          <div className="w-16 h-16 flex flex-col items-center justify-center gap-1">
+            <X className="w-16 h-16 stroke-3" />
+          </div>
+        </GlassSurface>
       </div>
 
       {/* Grainy Texture overlay on backdrop */}
@@ -171,7 +231,7 @@ const ProjectModal = ({ project, onClose }) => {
         style={{ opacity: 0 }}
       >
         {/* Header container ensuring Close Button overlaps nothing */}
-        <div className="w-full flex justify-end p-6 pb-0 shrink-0 md:hidden">
+        <div className="w-full flex justify-end p-6 pb-0 shrink-0 hidden">
           <button
             onClick={closeAnimation}
             className="w-10 h-10 sm:w-12 sm:h-12 bg-zinc-50 hover:bg-[#050505] border border-zinc-200 hover:border-[#050505] rounded-full flex items-center justify-center text-[#050505] hover:text-white transition-colors duration-300 shadow-sm"
@@ -182,11 +242,11 @@ const ProjectModal = ({ project, onClose }) => {
         </div>
 
         {/* Content Section utilizing matching vertical stack layout */}
-        <div className="px-8 pb-8 sm:px-12 sm:pb-12 pt-4 sm:pt-6 flex-1 overflow-y-auto custom-scrollbar">
+        <div className="px-8 pb-8 sm:px-12 sm:pb-12 pt-10 sm:pt-12 flex-1 overflow-y-auto custom-scrollbar">
           {/* Title */}
           <h3
             ref={(el) => (itemsRef.current[0] = el)}
-            className="text-[clamp(3rem,8vw,6rem)] font-black uppercase tracking-tighter leading-[0.85] mb-4 text-black"
+            className="text-[clamp(2.5rem,7vw,5rem)] font-black uppercase tracking-tighter leading-[0.85] mb-4 text-black"
             style={{ fontFamily: "'Inter', sans-serif", opacity: 0 }}
           >
             {project.title}
@@ -195,21 +255,46 @@ const ProjectModal = ({ project, onClose }) => {
           {/* Badge (Role) */}
           <div
             ref={(el) => (itemsRef.current[1] = el)}
-            className="text-blue-600 font-bold uppercase tracking-widest text-sm md:text-base mb-4 block"
+            className="text-blue-600 font-bold uppercase tracking-widest text-sm md:text-base mb-4 block pl-2 md:pl-4"
             style={{ opacity: 0 }}
           >
             {project.role}
           </div>
 
-          {/* Tech Chip Grid */}
+          {/* Tech Chip Marquee */}
           <div
             ref={(el) => (itemsRef.current[2] = el)}
-            className="flex flex-wrap gap-2 sm:gap-3"
+            className="flex flex-col overflow-hidden"
             style={{ opacity: 0 }}
           >
-            {project.tags.map((tag, idx) => (
-              <TechChip key={idx} tag={tag} />
-            ))}
+            {/* First Row Marquee */}
+            <div
+              ref={(el) => (containerRefs.current[0] = el)}
+              className="marquee-row overflow-hidden h-fit p-2"
+            >
+              <div
+                ref={(el) => (rowRefs.current[0] = el)}
+                className="marquee-content flex flex-nowrap gap-2 sm:gap-3"
+              >
+                {firstRowTags.map((tag, idx) => (
+                  <TechChip key={idx} tag={tag} />
+                ))}
+              </div>
+            </div>
+            {/* Second Row Marquee */}
+            <div
+              ref={(el) => (containerRefs.current[1] = el)}
+              className="marquee-row overflow-hidden h-fit p-2"
+            >
+              <div
+                ref={(el) => (rowRefs.current[1] = el)}
+                className="marquee-content flex flex-nowrap gap-2 sm:gap-3"
+              >
+                {secondRowTags.map((tag, idx) => (
+                  <TechChip key={idx} tag={tag} />
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Bullet List */}

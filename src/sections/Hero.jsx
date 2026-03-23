@@ -61,11 +61,14 @@ export default function Hero({ isDarkMode }) {
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-black leading-[0.85] tracking-tighter uppercase mb-4 md:mb-5 select-none">
               MERN <br />
               Developer
-              {/* Engineer */}
             </h1>
 
             {/* Tagline */}
-            <Text variant="body" as="p" className="text-base md:text-xl font-medium md:w-2/3 opacity-80 mb-8 md:mb-10">
+            <Text
+              variant="body"
+              as="p"
+              className="text-base md:text-xl font-medium md:w-2/3 opacity-80 mb-8 md:mb-10"
+            >
               Specialized in building enterprise analytics dashboards and
               scalable web platforms.
             </Text>
@@ -74,19 +77,15 @@ export default function Hero({ isDarkMode }) {
             <div className="flex w-full flex-wrap items-center justify-center md:justify-end gap-4 md:gap-6 mb-8 md:mb-10">
               <a
                 href="#contact"
-                className="group relative flex items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold transition-all duration-300  hover:bg-[#0A66C2] hover:border-[#0A66C2] md:px-8 md:py-4 backdrop-blur-md hidden sm:flex"
+                className=" relative flex items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold transition-all duration-300 hover:bg-blue-600 hover:text-white md:px-8 md:py-4 backdrop-blur-md hidden sm:flex"
               >
-                <span className="flex items-center gap-2 transition-transform duration-300 group-hover:-translate-y-[200%]">
-                  Say Hola 👋
-                </span>
-                <span className="absolute flex items-center gap-2 translate-y-[200%] transition-transform duration-300 group-hover:translate-y-0 text-white">
-                  <Linkedin className="w-4 h-4 md:w-5 md:h-5 text-white" />{" "}
-                  Linkedin
+                <span className="flex items-center gap-2 transition-transform duration-300  ">
+                  Say Hi 👋
                 </span>
               </a>
               <a
                 href="#projects"
-                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] hover:-translate-y-1"
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold transition-all "
               >
                 View Projects <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
               </a>
