@@ -20,6 +20,17 @@
   --font-sans: "Google Sans Flex", system-ui, sans-serif;
   --font-mono: "Google Sans Code", monospace;
   --color-green-yellow: #adff2f;
+
+  /* Warm Neutral Palette */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f5f4f0;
+  --color-neutral-100: #e8e7e2;
+  --color-neutral-200: #d1d0cb;
+  --color-neutral-400: #a8a7a2;
+  --color-neutral-600: #6b6a66;
+  --color-neutral-800: #3a3936;
+  --color-neutral-900: #1c1b19;
+  --color-neutral-1000: #000000;
 }
 
 @layer base {

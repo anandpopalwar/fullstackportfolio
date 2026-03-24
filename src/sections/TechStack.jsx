@@ -289,11 +289,11 @@ function ServiceRow() {
       ref={sectionRef}
       className="relative w-full min-h-[25vh] md:min-h-[25vh] pt-10 md:pt-20 px-4 md:px-6 pb-4 md:pb-10 flex flex-col items-center overflow-visible font-sans"
     >
-      {["Skills", "& Tech"].map((name) => (
+      {["Skills", "& tech"].map((name) => (
         <h1
           ref={titleRef}
           key={name}
-          className="relative z-10 text-[7rem] md:text-[10rem] font-bold uppercase tracking-tighter leading-[0.85] text-blue-600 px-4 select-none text-center"
+          className="relative z-10 text-[56px] font-extrabold uppercase tracking-tight leading-none text-blue-600 px-4 select-none text-center"
           style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
         >
           {name}
@@ -311,16 +311,16 @@ function ServiceRow() {
             <div
               key={i}
               ref={(el) => (tagRefs.current[i] = el)}
-              className="absolute top-0 left-0 flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 bg-[#1a1a1a] text-[#f0f0f0] text-lg md:text-xl whitespace-nowrap opacity-0 animate-[fadeIn_0.3s_ease_forwards] will-change-transform cursor-grab active:cursor-grabbing select-none"
+              className="absolute top-0 left-0 flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/20 bg-[#1a1a1a] text-[#f0f0f0] text-[12px] whitespace-nowrap opacity-0 animate-[fadeIn_0.3s_ease_forwards] will-change-transform cursor-grab active:cursor-grabbing select-none"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <span className="w-5 h-5 shrink-0 pointer-events-none">
+              <span className="w-4 h-4 shrink-0 pointer-events-none">
                 {skill.icon}
               </span>
               <Text
                 as="span"
                 variant="monoBody"
-                className="pointer-events-none pb-0.5 leading-none"
+                className="pointer-events-none pb-0.5 leading-none font-medium tracking-[0.04em]"
               >
                 {skill.name}
               </Text>

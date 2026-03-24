@@ -1,7 +1,10 @@
 import React from "react";
 import { FileDown, Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
 import SocialIcon from "../components/ui/SocialIcon";
-import CustomButton from "../components/ui/CustomButton";
+import OverlapImage from "../components/ui/OverlapImage";
+import gmr_dumper_truck from "../assets/project_imges/gmr_dumper_truck.png";
+import energy_grid from "../assets/project_imges/energy_grid.png";
+import gmr_plant_towers from "../assets/project_imges/gmr_plant_towers.png";
 
 const socials = [
   {

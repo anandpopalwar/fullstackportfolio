@@ -14,6 +14,17 @@ import {
 import StackIcon from "tech-stack-icons";
 import ProjectModal from "../components/ui/ProjectModal";
 import { AxiosIcon, ChartjsIcon } from "../components/ui/SocialIcon";
+import OverlapImage from "../components/ui/OverlapImage";
+
+// Import project images
+import gmr_dumper_truck from "../assets/project_imges/gmr_dumper_truck.png";
+import gmr_plant_towers from "../assets/project_imges/gmr_plant_towers.png";
+import energy_grid from "../assets/project_imges/energy_grid.png";
+import glove from "../assets/project_imges/glove.png";
+import camera from "../assets/project_imges/Camera.png";
+import conveyor from "../assets/project_imges/conveyor.png";
+import open_box from "../assets/project_imges/open_box.png";
+import TechChip from "../components/ui/Techchip";
 
 const LucideIcon = ({ name }) => {
   switch (name) {
@@ -77,6 +88,8 @@ const SERVICES = [
       "Built reusable component library (20+ modules) with lazy loading and code splitting.",
       "Integrated weighbridge, GRN workflows, Form 15, and audit logging for full traceability.",
     ],
+    tldr: "Led development of an enterprise-scale real-time vehicle tracking system with multi-language support, offline maps, custom RBAC, reusable components, and integrated workflows with full audit traceability.",
+    overlapImgs: [gmr_dumper_truck, gmr_plant_towers, energy_grid],
     shape: "rounded-[80px_20px_100px_40px]",
     image: "GMR_LOGO_PLACEHOLDER",
   },
@@ -95,9 +108,13 @@ const SERVICES = [
       { name: "Docker", icon: <LucideIcon name="docker" /> },
     ],
     desc: [
-      "Built real-time glove production monitoring with AI-powered defect detection.",
-      "Enabled live updates, notifications, and file downloads with low-latency UX.",
+      "Visualized AI box detection outputs with server-side pagination and reusable components.",
+      "Implemented secure API flows and centralized async state management.",
     ],
+
+    tldr: "Visualized AI box detection with server-side pagination and reusable components, while implementing secure APIs and centralized async state management.",
+    overlapImgs: [camera, open_box, conveyor],
+
     image: "MAHINDRA_LOGO_PLACEHOLDER",
   },
   {
@@ -115,22 +132,17 @@ const SERVICES = [
       { name: "Docker", icon: <LucideIcon name="docker" /> },
     ],
     desc: [
-      "Visualized AI box detection outputs with server-side pagination and reusable components.",
-      "Implemented secure API flows and centralized async state management.",
+      "Built real-time glove production monitoring with AI-powered defect detection.",
+      "Enabled live updates, notifications, and file downloads with low-latency UX.",
     ],
+    tldr: "Built a real-time glove production monitoring system with AI-powered defect detection, enabling low-latency live updates, notifications, and file downloads.",
+    overlapImgs: [camera, glove, conveyor],
     image: "DPL_LOGO_PLACEHOLDER",
   },
 ];
 
 const ACCENT = "#2563eb";
 
-// ---------------------------------------------------------------------------
-// Unified GSAP Portal Modal (Mobile & Desktop)
-// ---------------------------------------------------------------------------
-
-// ---------------------------------------------------------------------------
-// Main Component
-// ---------------------------------------------------------------------------
 export default function ProjectShowcase() {
   const containerRef = useRef(null);
   const titleRefs = useRef([]);
@@ -139,14 +151,13 @@ export default function ProjectShowcase() {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // ─── Desktop Magnetic Title Pull ───
   useEffect(() => {
     if (!gsap) return;
 
     const handleMouseMoveRow = (e, index) => {
       const title = titleRefs.current[index];
       const row = rowRefs.current[index];
-      if (!title || !row || selectedProject) return; // Disable pull if modal is open
+      if (!title || !row || selectedProject) return;
 
       const rect = title.getBoundingClientRect();
       const titleCenterX = rect.left + rect.width / 2;
@@ -222,7 +233,7 @@ export default function ProjectShowcase() {
       <div className="max-w-7xl mx-auto mb-4 md:mb-6">
         <div className="flex items-center justify-start border-b-2 border-zinc-100 pb-2">
           <h2
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-black uppercase tracking-tighter leading-none text-[#050505] underline underline-offset-8"
+            className="text-2xl sm:text-2xl md:text-3xl lg:text-[3rem] font-black uppercase tracking-tighter leading-none text-[#050505] underline underline-offset-8"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Projects
@@ -249,15 +260,14 @@ export default function ProjectShowcase() {
             >
               {/* Row Header */}
               <div
-                className={`group flex items-center justify-between gap-4 md:gap-8 py-8 md:py-14 transition-all duration-500 ${
-                  isDimmed ? "opacity-30 grayscale" : "opacity-100"
-                } ${isActive ? "bg-zinc-50/80 -mx-4 px-4 rounded-[32px]" : ""}`}
+                className={`group grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-8 py-8 md:py-14 transition-all duration-500 ${isDimmed ? "opacity-20 grayscale" : "opacity-100"
+                  } ${isActive ? "bg-zinc-50/80 -mx-4 px-4 rounded-[32px]" : ""}`}
               >
-                {/* Title and Role Container */}
-                <div className="flex flex-col gap-2 md:gap-3 flex-1 min-w-0 justify-center">
+                {/* Title and Content Area (2 columns) */}
+                <div className="md:col-span-2 flex flex-col gap-2 md:gap-3 justify-center min-w-0">
                   <h3
                     ref={(el) => (titleRefs.current[i] = el)}
-                    className="text-4xl sm:text-5xl md:text-7xl lg:text-[6rem] font-black uppercase tracking-tighter leading-none transition-colors duration-500 select-none truncate"
+                    className="text-2xl sm:text-2xl md:text-3xl lg:text-[3.4rem] font-semibold tracking-tighter leading-none transition-colors duration-500 select-none truncate"
                     style={{
                       fontFamily: "'Inter', sans-serif",
                       color: isActive ? ACCENT : "#050505",
@@ -265,26 +275,28 @@ export default function ProjectShowcase() {
                   >
                     {project.title}
                   </h3>
-                  <span
-                    className="text-xs md:text-sm font-bold uppercase tracking-widest transition-colors duration-500 pl-2 md:pl-4"
-                    style={{
-                      color: isActive ? "#050505" : ACCENT,
-                    }}
-                  >
-                    {project.role}.
-                  </span>
 
-                  {/* Description Highlights */}
-                  <ul className="pl-2 md:pl-4 mt-2 space-y-1 md:space-y-1.5 transition-opacity duration-500">
-                    {project.desc.slice(0, 2).map((point, idx) => (
-                      <li
-                        key={idx}
-                        className="text-xs md:text-sm text-zinc-500 font-medium line-clamp-1 border-l-[3px] border-zinc-200 pl-3"
+                  <div className="font-normal tracking-normal transition-colors duration-500">
+                    <div className="w-fit pointer-events-none flex items-center gap-2 border border-zinc-400 bg-white text-neutral-700 px-4 py-1 text-[14px] font-bold transition-colors rounded-full cursor-default select-none whitespace-nowrap group ">
+                      <span
+                        className="leading-[1.7] mt-[-1px]"
+                        style={{ fontFamily: "'Google Sans Code', monospace" }}
                       >
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
+                        {project.role}
+                      </span>
+                    </div>
+                  </div>
+                  {/* Description Highlights */}
+                  <span className="w-3/4 mt-2 space-y-1 md:space-y-1.5 transition-opacity duration-500 text-xs md:text-sm text-zinc-500 tracking-tight font-medium line-clamp-2">
+                    {project?.tldr}
+                  </span>
+                </div>
+                {/* OverlapImage Area (1 column) */}
+                <div className="md:col-span-1 flex items-center justify-center w-full opacity-70 md:opacity-100 pointer-events-none md:pointer-events-auto">
+                  <OverlapImage
+                    imgs={project.overlapImgs}
+                    isActive={isActive}
+                  />
                 </div>
               </div>
             </div>
@@ -302,3 +314,7 @@ export default function ProjectShowcase() {
     </section>
   );
 }
+// {/* OverlapImage for the project */ }
+// <div className="absolute right-0 w-w-1/2 md:w-1/2 lg:w-1/2 min-h-min flex items-center justify-left">
+//   <OverlapImage imgs={project.overlapImgs} />
+// </div>

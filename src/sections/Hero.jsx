@@ -58,26 +58,32 @@ export default function Hero({ isDarkMode }) {
         <div className="relative z-10 w-full flex flex-col items-start md:items-end text-left md:text-right space-y-6 md:space-y-8 mt-16 md:mt-0">
           <div className="flex flex-col items-start md:items-end max-w-3xl w-full">
             {/* Massive Responsive Typography */}
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-black leading-[0.85] tracking-tighter uppercase mb-4 md:mb-5 select-none">
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-black leading-[0.85] tracking-tighter mb-4 md:mb-5 select-none text-neutral-900">
               MERN <br />
-              Developer
+              developer
             </h1>
 
             {/* Tagline */}
-            <Text
+
+            <span className="w-3/4 transition-opacity duration-500 text-[16px] text-neutral-700 tracking-normal font-medium leading-[1.65] line-clamp-2 mb-8 md:mb-10 mt-6 md:mt-6">
+              Specialized in building enterprise analytics dashboards and
+              scalable web platforms. Led development of real-time vehicle
+              tracking systems
+            </span>
+            {/* <Text
               variant="body"
               as="p"
-              className="text-base md:text-xl font-medium md:w-2/3 opacity-80 mb-8 md:mb-10"
+              className="text-base md:text-xl font-medium md:w-2/3 text-neutral-600 opacity-90 mb-8 md:mb-10"
             >
               Specialized in building enterprise analytics dashboards and
               scalable web platforms.
-            </Text>
+            </Text> */}
 
             {/* CTA Buttons */}
             <div className="flex w-full flex-wrap items-center justify-center md:justify-end gap-4 md:gap-6 mb-8 md:mb-10">
               <a
                 href="#contact"
-                className=" relative flex items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold transition-all duration-300 hover:bg-blue-600 hover:text-white md:px-8 md:py-4 backdrop-blur-md hidden sm:flex"
+                className=" relative flex items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/5 px-6 py-3 font-bold transition-all duration-300 text-neutral-900 hover:bg-blue-600 hover:text-white md:px-8 md:py-4 backdrop-blur-md hidden sm:flex"
               >
                 <span className="flex items-center gap-2 transition-transform duration-300  ">
                   Say Hi 👋
@@ -85,9 +91,10 @@ export default function Hero({ isDarkMode }) {
               </a>
               <a
                 href="#projects"
-                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-bold transition-all "
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-neutral-50 px-6 md:px-8 py-3 md:py-4 rounded-full font-bold transition-all "
               >
-                View Projects <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
+                View Projects{" "}
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 text-neutral-50" />
               </a>
             </div>
           </div>
